@@ -1,4 +1,4 @@
-# Server-client
+# Server-Client
 Server-client is a simple application that demonstrates communication between a server and a client. 
 
 ## Use
