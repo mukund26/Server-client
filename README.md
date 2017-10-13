@@ -3,7 +3,13 @@ Server-client is a simple application that demonstrates communication between a 
 
 ## Use
 - Execute server.py through the command line
+```
+python server.py <host_address> <port_number>
+```
 - Execute client.py through the command line
+```
+python client.py <host_address> <port_number>
+```
 - Input a list of space seperated integers into the client.py instance
 
 
