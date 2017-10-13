@@ -2,10 +2,11 @@
 import socket
 import argparse
 
+# Initialize argument parser
 parser = argparse.ArgumentParser()
 
 # Command line argument for Server Address
-# If left blank defaults to localhost
+# If left blank defaults to 127.0.0.1
 parser.add_argument("Host",
                     help="Enter the host",
                     type=str,
@@ -14,7 +15,7 @@ parser.add_argument("Host",
                     default="127.0.0.1")
 
 # Command line argument for Port Number
-# If left blank defaults to 8080
+# If left blank defaults to 12345
 parser.add_argument("Port",
                     help="Enter the port",
                     type=int,
