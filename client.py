@@ -33,7 +33,7 @@ s.connect((host, port))
 a =input("Enter space-separated integers: -\n")
 s.sendall(a.encode("utf-8"))
 
-data = s.recv(1024)
+data = s.recv(2048)
 s.close()
 # Convert received data from bytes to integers
 print("Received data: ", int.from_bytes(data, byteorder='big'))

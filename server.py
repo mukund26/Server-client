@@ -33,7 +33,7 @@ s.listen(1)
 while True:
     conn, addr = s.accept()
     print("Connected to: ", addr)
-    data = conn.recv(1024)
+    data = conn.recv(2048)
     if not data: break
 
     # Convert input into a list of integers
