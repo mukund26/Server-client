@@ -1,6 +1,6 @@
 #! /usr/bin/python
-import socket
-import argparse
+from sys import version_info
+import socket, argparse
 
 # Initialize argument parser
 parser = argparse.ArgumentParser()
@@ -30,7 +30,11 @@ s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect((host, port))
 
 # Take input from a user, encode it to utf-8, and send to server
-a =input("Enter space-separated integers: -\n")
+if version_info[0] == 2:
+    rawinput = raw_input
+else:
+    rawinput = input
+a = rawinput("Enter space-separated integers: -\n")
 s.sendall(a.encode("utf-8"))
 
 data = s.recv(2048)
