@@ -37,11 +37,12 @@ while True:
     if not data: break
 
     # Convert input into a list of integers
-    num_list = list(map(lambda x: int(x), data.decode("utf-8").split(' ')))
+    num_list = list(map(lambda x: int(x), data.decode("utf-8").split( )))
 
     # Use reduce to compute sum of list
     num_sum = reduce((lambda x, y: x + y), num_list)
 
     # Convert sum to bytes and send to client
     conn.sendall(num_sum.to_bytes(2, byteorder='big'))
+    
 conn.close()

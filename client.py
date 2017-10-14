@@ -30,7 +30,7 @@ s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect((host, port))
 
 # Take input from a user, encode it to utf-8, and send to server
-a = input("Enter space-separated integers: -\n")
+a =input("Enter space-separated integers: -\n")
 s.sendall(a.encode("utf-8"))
 
 data = s.recv(1024)
