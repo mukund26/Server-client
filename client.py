@@ -28,9 +28,12 @@ port = parser.parse_args().Port
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect((host, port))
-print("ENTER NO TO BE SENT:")
-a = raw_input()
-s.sendall(a)
+
+# Take input from a user, encode it to utf-8, and send to server
+a = input("Enter space-separated integers: -\n")
+s.sendall(a.encode("utf-8"))
+
 data = s.recv(1024)
 s.close()
-print("RECEIVED DATA :", data)
+# Convert received data from bytes to integers
+print("Received data: ", int.from_bytes(data, byteorder='big'))

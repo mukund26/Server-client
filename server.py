@@ -1,7 +1,7 @@
 #! /usr/bin/python
 import socket
 import argparse
-
+from functools import reduce
 # Initialize argument parser
 parser = argparse.ArgumentParser()
 
@@ -32,11 +32,16 @@ s.listen(1)
 
 while True:
     conn, addr = s.accept()
-    print("Connected by:", addr)
+    print("Connected to: ", addr)
     data = conn.recv(1024)
     if not data: break
-    a = [int(i) for i in data.split(' ')]
-    k = a[0] + a[1]
-    k = str(k)
-    conn.sendall(k)
-conn.close
+
+    # Convert input into a list of integers
+    num_list = list(map(lambda x: int(x), data.decode("utf-8").split(' ')))
+
+    # Use reduce to compute sum of list
+    num_sum = reduce((lambda x, y: x + y), num_list)
+
+    # Convert sum to bytes and send to client
+    conn.sendall(num_sum.to_bytes(2, byteorder='big'))
+conn.close()
